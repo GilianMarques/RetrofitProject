@@ -1,0 +1,11 @@
+Aula 1:
+
+Criamos a classe [ApiCallResponse] que é um POJO pra receber os dados da API
+
+A notação @SerializedName("nome-aqui") serve pra mapear um valor do json para o POJO caso o nome
+do atributo seja diferente do nome no json
+
+Criamos a Interface APiCall que será a implementação feita pelo retrofit
+
+Implementamos a ApiCallService que ja existia pra fazer uma chamada GET à api
+a
