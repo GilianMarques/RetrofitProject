@@ -8,4 +8,15 @@ do atributo seja diferente do nome no json
 Criamos a Interface APiCall que será a implementação feita pelo retrofit
 
 Implementamos a ApiCallService que ja existia pra fazer uma chamada GET à api
-a
+
+
+Aula 2:
+
+Criamos a função fetchData() no viewmodel para baixar dados da API usando a ApiCallService
+
+Criamos a função flatten() na ApiCallResponse que é responsável por mapear os dados retornados pela API em lista de objetos [ITEM] que são exibidos
+no RecyclerView. O que é API faz pelo menos por hora é retornar as informações que foram passadas para ela, ou seja métodos, corpo e cabeçalho que
+são enviados para a API do postman são retornados como resposta. Usando essas informações é possível praticar.
+
+Foi necessário mudar o BASE_URL do projeto porque API disponibilizada pelo instrutor já não funciona mais
+

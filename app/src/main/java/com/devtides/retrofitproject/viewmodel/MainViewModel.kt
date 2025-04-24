@@ -1,7 +1,10 @@
 package com.devtides.retrofitproject.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.devtides.retrofitproject.model.ApiCallResponse
+import com.devtides.retrofitproject.model.ApiCallService
 import com.devtides.retrofitproject.model.Item
 import com.devtides.retrofitproject.model.TYPE_CATEGORY
 import com.devtides.retrofitproject.model.TYPE_ITEM
@@ -10,7 +13,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel: ViewModel() {
+class MainViewModel : ViewModel() {
 
     var job: Job? = null
     val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
@@ -24,16 +27,25 @@ class MainViewModel: ViewModel() {
     val error = MutableLiveData<String>()
 
     fun fetchData() {
-        apiResponse.value = arrayListOf(
-            Item("Category1", "", TYPE_CATEGORY),
-            Item("Key1", "Value1", TYPE_ITEM),
-            Item("Key2", "Value2", TYPE_ITEM),
-            Item("Category2", "", TYPE_CATEGORY),
-            Item("Key3", "Value3", TYPE_ITEM),
-            Item("Key4", "Value4", TYPE_ITEM)
-        )
-        error.value = null
-        loading.value = false
+        loading.value = true
+
+        ApiCallService.call().enqueue/*enqueue roda de forma assincrona*/(object : Callback<ApiCallResponse> {
+            override fun onResponse(
+                call: Call<ApiCallResponse?>,
+                response: Response<ApiCallResponse?>
+            ) {
+                val body = response.body() // this should contain all response data
+                apiResponse.value = body?.flatten()
+                error.value = null
+                loading.value = false
+            }
+
+            override fun onFailure(call: Call<ApiCallResponse?>, t: Throwable) {
+                onError(t.localizedMessage)
+            }
+
+        })
+
     }
 
     private fun onError(message: String) {

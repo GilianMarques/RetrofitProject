@@ -1,6 +1,7 @@
 package com.devtides.retrofitproject.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.apiResponse.observe(this, Observer { items ->
             items?.let {
+
                 items_list.visibility = View.VISIBLE
                 itemsAdapter.updateItems(it)
             }
