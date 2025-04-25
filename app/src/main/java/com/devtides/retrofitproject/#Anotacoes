@@ -20,3 +20,15 @@ são enviados para a API do postman são retornados como resposta. Usando essas 
 
 Foi necessário mudar o BASE_URL do projeto porque API disponibilizada pelo instrutor já não funciona mais
 
+Aula 3-4:
+
+Aprendemos sobre Loggin (para fins de depuração)
+Intercept requests and responses and log them to the console
+Levels:
+• BASIC: request and response lines
+• HEADERS: ↑ + headers
+• BODY: ↑ + bodies
+• NONE
+
+A ApiCallService Foi modificada para incluir um objeto de login dentro do retrofit através do OKHttpclient
+
