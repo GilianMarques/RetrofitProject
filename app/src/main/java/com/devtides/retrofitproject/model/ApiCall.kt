@@ -9,6 +9,6 @@ import retrofit2.http.GET
  */
 interface ApiCall {
 
-    @GET("GET")
+    @GET("get")
     fun callGet(): Call<ApiCallResponse>
 }

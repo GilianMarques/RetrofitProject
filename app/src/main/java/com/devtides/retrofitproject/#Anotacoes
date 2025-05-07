@@ -32,3 +32,21 @@ Levels:
 
 A ApiCallService Foi modificada para incluir um objeto de login dentro do retrofit através do OKHttpclient
 
+Aula 5: Url Resolution
+
+BASE_URL should end in a '/'. Example: https://trello.api/v1/boards/
+but if you forget to add it, retrofit will add it for you
+
+Endpoint should not begin with a '/' it ends up messing with the final url
+Example: 'cards' = correct, '/cards' = wrong.
+
+when you set variables correctly:
+BASE_URL = "https://trello.api/v1/boards/"
+ENDPOINT = "cards"
+
+retrofit gives you back a full url:
+URL = "https://trello.api/v1/boards/cards"
+
+But if you start your endpoint with an forward slash this is what you get:
+URL = "https://trello.api/cards"
+Notice that the entire path to the endpoint is gone
