@@ -1,0 +1,11 @@
+ApiCallResponse:
+This is the object that represents the data received from the server whether its in json, xml o any other format.
+
+ApiCall:
+Its the interface where we define the methods we can access though the API.
+You just need to define the appropriate HTTP method as annotation with the target endpoint and then specify
+the return type of the function.
+
+ApiCallService:
+Its the base where we instantiate and configure the retrofit object,and its also where we
+ retrieve the generated implementations of the ApiCall provided by retrofit.

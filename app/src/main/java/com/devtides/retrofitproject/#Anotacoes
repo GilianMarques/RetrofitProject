@@ -50,3 +50,45 @@ URL = "https://trello.api/v1/boards/cards"
 But if you start your endpoint with an forward slash this is what you get:
 URL = "https://trello.api/cards"
 Notice that the entire path to the endpoint is gone
+
+Aula 6:
+
+@GET - request data from server.
+Allows us to send parameters in the url itself.
+
+@POST - add data to server
+Allows us to send parameters in he body of request.
+
+@PUT - add a resource on server like files
+@DELETE - remove a resource from server
+@OPTIONS - find out what options are available for a given endpoint
+@HEAD - get metadata for a given endpoint
+@PATCH - modify a resource on server
+
+Aula 7:
+Queries
+
+in  the class we've learned how to use parameters in the queries we do to the api:
+
+Static way through function annotation
+ @Query("endpoint?param=value&otherparam=othervalue")
+No way to change these at runtime. This approach is useful when you need to pass the same params to every single call.
+
+
+Dynamic way through function's parameter annotation.
+   @Get("endpoint")
+     fun callToApi(
+         @Query("param1") param1: String,
+         @Query("param2") param2: Int?
+     ): Call<ApiCallResponse>
+
+The second param is an optional parameter,  if you pass null to an optional parameter retrofit won't
+put it in the final URl.
+
+
+The Multi parameter approach
+@GET("endpoint")
+fun callGetWithMapOfParams(@QueryMap params: Map<String, String>): Call<ApiCallResponse>
+
+Here we can pass a  Map<paramName, paramValue> and retrofif with build the url based on it
+

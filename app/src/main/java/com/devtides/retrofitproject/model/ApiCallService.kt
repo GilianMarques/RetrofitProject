@@ -26,6 +26,6 @@ object ApiCallService {
         okHttpClient.addInterceptor(logging)
     }
 
-    fun call() = api.callGet()
+    fun call() = api.callGetWithMapOfParams(hashMapOf("name" to "jubileu", "age" to "112"))
 
 }

@@ -29,7 +29,7 @@ class MainViewModel : ViewModel() {
     fun fetchData() {
         loading.value = true
 
-        ApiCallService.call().enqueue/*enqueue roda de forma assincrona*/(object : Callback<ApiCallResponse> {
+        val callback = object : Callback<ApiCallResponse> {
             override fun onResponse(
                 call: Call<ApiCallResponse?>,
                 response: Response<ApiCallResponse?>
@@ -44,7 +44,11 @@ class MainViewModel : ViewModel() {
                 onError(t.localizedMessage)
             }
 
-        })
+        }
+
+        ApiCallService.call()
+            /*enqueue roda de forma assincrona*/
+            .enqueue(callback)
 
     }
 
