@@ -92,3 +92,35 @@ fun callGetWithMapOfParams(@QueryMap params: Map<String, String>): Call<ApiCallR
 
 Here we can pass a  Map<paramName, paramValue> and retrofif with build the url based on it
 
+Aula 8:
+
+Uri manipulation
+
+Static
+@GET("user/info")
+fun makeCall() = Call<Response>
+
+the way we've been doing so far
+
+Bypass the base url
+@GET("https://example.com/account/user/info")
+fun makeCall() = Call<Response>
+
+here we can set a url that will be used instead of the base url defined at ApiCallService
+
+Dynamic URL
+@GET
+fun makeCall(@URL url: String) = Call<Response>
+Call<Response>
+
+Here we pass to the url as function's parameter
+
+Replacement blocks
+@GET("account/{user}/{end}")
+fun makeCall(@Path("user") u: String, @Path("end")
+e: String) = Call<Response>
+
+Here we can pass as params, values that will be set inside the url, useful when you need to access
+dynamic endpoints
+
+
